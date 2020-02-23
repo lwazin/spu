@@ -1,9 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 
 class Applicant(models.Model):
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     # 2. PERSONAL DETAILS
     gender = models.TextField(max_length=30)
@@ -38,7 +41,7 @@ class StudyHistory(models.Model):
 
     # 10. PREVIOUS AND CURRENT TERTIARY EDUCATION STUDIES
     applicant = models.ForeignKey(
-        Applicant, related_name='applicant', on_delete=models.CASCADE)
+        Applicant, related_name='applicant_history', on_delete=models.CASCADE)
     study_programme = models.TextField(max_length=70)
     institution = models.TextField(max_length=70)
     student_number = models.SlugField()
@@ -52,14 +55,14 @@ class StudyHistory(models.Model):
 class Subject(models.Model):
 
     applicant = models.ForeignKey(
-        Applicant, related_name='applicant', on_delete=models.CASCADE)
+        Applicant, related_name='applicant_subject', on_delete=models.CASCADE)
     subject = models.TextField(max_length=30, blank=True)
 
 
 class Details(models.Model):
 
     applicant = models.ForeignKey(
-        Applicant, related_name='applicant', on_delete=models.CASCADE)
+        Applicant, related_name='applicant_details', on_delete=models.CASCADE)
 
     detail_type = models.SlugField()
 
@@ -83,7 +86,7 @@ class Choice(models.Model):
 
     # 1. CHOICE OF STUDY PROGRAMME
     applicant = models.ForeignKey(
-        Applicant, related_name='applicant', on_delete=models.CASCADE)
+        Applicant, related_name='applicant_choice', on_delete=models.CASCADE)
     choice = models.TextField(max_length=30)
     choice_order = models.IntegerField(default=0)
 
@@ -92,7 +95,7 @@ class SpecialNeed(models.Model):
 
     # 4. PERSONAL INFORMATION (Disability or Special Needs)
     applicant = models.ForeignKey(
-        Applicant, related_name='applicant', on_delete=models.CASCADE)
+        Applicant, related_name='applicant_special', on_delete=models.CASCADE)
     special_need = models.TextField(max_length=30)
 
 
@@ -100,7 +103,7 @@ class Sport(models.Model):
 
     # 4. PERSONAL INFORMATION (Sport Involvement)
     applicant = models.ForeignKey(
-        Applicant, related_name='applicant', on_delete=models.CASCADE)
+        Applicant, related_name='applicant_sport', on_delete=models.CASCADE)
     sport = models.TextField(max_length=30)
     level = models.TextField(max_length=50)
 
@@ -109,6 +112,6 @@ class Document(models.Model):
 
     # 4. PERSONAL INFORMATION (Sport Involvement)
     applicant = models.ForeignKey(
-        Applicant, related_name='applicant', on_delete=models.CASCADE)
+        Applicant, related_name='applicant_document', on_delete=models.CASCADE)
     document_type = models.SlugField()
     document = models.ImageField(upload_to='documents')

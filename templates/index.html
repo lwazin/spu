@@ -1,0 +1,1009 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+
+    <style>
+        body {
+            background: #e3e3e3;
+        }
+
+        .shade {
+            background: #ffffff;
+            min-height: 200px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .form_grid {
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- BANNER -->
+
+    <div class="container shade mb-3">
+    </div>
+
+    <form action="{% url 'submit' %}" method="post">
+        {% csrf_token %}
+
+        <!-- PERSONAL DETAILS -->
+
+        <div class="container shade mb-3 pb-2">
+
+            <div class="alert alert-default mb-1">
+                <small>
+                    <strong class="float-right">
+                        PERSONAL
+                    </strong>
+                    PERSONAL DETAILS
+                </small>
+            </div>
+
+            <div class="partition mb-3 pl-3">
+
+                <div class="input-group mb-1">
+                    <input type="text" class="form-control" placeholder="Full Names" aria-label="Full_Names"
+                        aria-describedby="basic-addon1" name="personal_name">
+
+                    <input type="text" class="form-control" placeholder="Surname" aria-label="Surname"
+                        aria-describedby="basic-addon1" name="personal_surname">
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <select class="custom-select" name="personal_title">
+                        <option value="title">Title
+                        </option>
+                        <option value="mr">Mr
+                        </option>
+                        <option value="mrs">Mrs
+                        </option>
+                        <option value="ms">Ms
+                        </option>
+                        <option value="other">Other
+                        </option>
+                    </select>
+
+                    <select class="custom-select" name="personal_gender">
+                        <option value="gender">
+                            Gender</option>
+                        <option value="male">Male
+                        </option>
+                        <option value="female">
+                            Female</option>
+                    </select>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <select class="custom-select" name="personal_citizenship">
+                        <option value="question">Are
+                            you a South African
+                            citizen?</option>
+                        <option value="yes">Yes
+                        </option>
+                        <option value="no">No
+                        </option>
+                    </select>
+
+                    <input type="text" class="form-control" placeholder="ID Number / (Int. Students, Passport Number)"
+                        aria-label="ID_Number" aria-describedby="basic-addon1" name="personal_id">
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <input type="date" name="personal_date_of_birth">
+
+                </div>
+
+            </div>
+
+            <div class="alert alert-default mb-1">
+                <small>
+                    <strong class="float-right">
+                    </strong>
+                    Note that this information is required for statistical purposes for us to ensure that we address
+                    your needs wherever we can.
+                </small>
+            </div>
+
+            <div class="partition mb-3 pl-3">
+
+                <div class="input-group mb-1">
+
+                    <select class="custom-select" name="personal_population">
+                        <option value="question">
+                            Population Group
+                        </option>
+                        <option value="black">Black
+                        </option>
+                        <option value="coloured">
+                            Coloured</option>
+                        <option value="white">White
+                        </option>
+                        <option value="indian">
+                            Indian</option>
+                        <option value="chinese">
+                            Chinese</option>
+                    </select>
+
+                    <select class="custom-select" name="personal_marital">
+                        <option value="question">
+                            Marital Status</option>
+                        <option value="single">
+                            Single</option>
+                        <option value="married">
+                            Married</option>
+                        <option value="widower">
+                            Widower</option>
+                        <option value="divorced">
+                            Divorced</option>
+                        <option value="separated">
+                            Separated</option>
+                    </select>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <select class="custom-select" name="personal_language">
+                        <option value="question">
+                            Home Language</option>
+                        <option value="afrikaans">
+                            Afrikaans</option>
+                        <option value="english">
+                            English</option>
+                        <option value="isizulu">
+                            Isizulu</option>
+                        <option value="ndebele">
+                            Ndebele</option>
+                        <option value="sepedi">
+                            Sepedi</option>
+                        <option value="seSotho">
+                            SeSotho</option>
+                        <option value="setswana">
+                            Setswana</option>
+                        <option value="siswati">
+                            Siswati</option>
+                        <option value="sixhosa">
+                            Sixhosa</option>
+                        <option value="tshivenda">
+                            Tshivenda</option>
+                        <option value="xitsonga">
+                            Xitsonga</option>
+                    </select>
+
+                    <select class="custom-select" name="personal_religion">
+                        <option value="question">
+                            Religious Affiliation
+                        </option>
+                        <option value="christian">
+                            Christian</option>
+                        <option value="hindu">Hindu
+                        </option>
+                        <option value="jewish">
+                            Jewish</option>
+                        <option value="muslim ">
+                            Muslim </option>
+                        <option value="none">None
+                        </option>
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="alert alert-default mb-1">
+                <small>
+                    <strong class="float-right">
+                    </strong>
+                    It is important to inform us of your special needs at the time of application. You should also
+                    attach any supporting documentation that may assist us in trying to accommodate your needs.
+                </small>
+            </div>
+
+            <div class="partition mb-3 pl-3">
+
+
+                <div class="input-group mb-3">
+
+                    <select class="custom-select" name="personal_disability">
+                        <option value="question">
+                            Disability or Special
+                            needs</option>
+                        <option value="none">
+                            None</option>
+                        <option value="blindness">
+                            Blindness</option>
+                        <option value="deafness">
+                            Deafness</option>
+                        <option value="partial_hearing">
+                            Partial Hearing</option>
+                        <option value="partially_sighted">
+                            Partially Sighted
+                        </option>
+                        <option value="learning_disability">
+                            Learning Disability
+                        </option>
+                        <option value="speech">
+                            Speech</option>
+                        <option value="cerebral_palsy">
+                            Cerebral Palsy</option>
+                        <option value="paraplegic">
+                            Paraplegic</option>
+                        <option value="impaired_mobility">
+                            Impaired Mobility
+                        </option>
+                        <option value="adhd">
+                            ADD/ADHD (chronic)
+                        </option>
+                        <option value="quadriplegic">
+                            Quadriplegic</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="alert alert-default mb-1">
+                <small>
+                    <strong class="float-right">
+                    </strong>
+                    It is essential to carefully enter all your details here.
+                </small>
+            </div>
+
+            <div class="partition mb-3 pl-3">
+
+                <div class="input-group mb-1">
+
+                    <input type="text" class="form-control" placeholder="Street / Physical Address"
+                        aria-label="Street_Physical" aria-describedby="basic-addon1" name="personal_address">
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <input type="text" class="form-control" placeholder="City" aria-label="City"
+                        aria-describedby="basic-addon1" name="personal_city">
+
+                    <input type="text" class="form-control" placeholder="Province" aria-label="Province"
+                        aria-describedby="basic-addon1" name="personal_province">
+
+                </div>
+
+
+                <div class="input-group mb-3">
+
+                    <input type="text" class="form-control" placeholder="Country" aria-label="Country"
+                        aria-describedby="basic-addon1" name="personal_country">
+
+                    <input type="text" class="form-control" placeholder="Postal Code" aria-label="Postal Code"
+                        aria-describedby="basic-addon1" name="personal_postal">
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <input type="text" class="form-control" placeholder="Mobile Number 1" aria-label="Mobile_1"
+                        aria-describedby="basic-addon1" name="personal_mobile1">
+
+                    <input type="text" class="form-control" placeholder="Mobile Number 2" aria-label="Mobile_2"
+                        aria-describedby="basic-addon1" name="personal_mobile2">
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <input type="email" class="form-control" placeholder="E-Mail" aria-label="E-Mail"
+                        aria-describedby="basic-addon1" name="personal_email">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SUPPORT -->
+
+        <div class="container shade mb-3 pb-2">
+
+            <div class="alert alert-default mb-1">
+                <small>
+                    <strong class="float-right">
+                        SUPPORT
+                    </strong>
+                    NEXT OF KIN
+                </small>
+            </div>
+
+            <div class="partition mb-3 pl-3">
+
+                <div class="input-group mb-1">
+
+                    <input type="text" class="form-control" placeholder="Relationship (eg. Mother, Father, Uncle)"
+                        aria-label="Relationship" aria-describedby="basic-addon1" name='next_of_kin_relationship'>
+
+                    <select class="custom-select" name='next_of_kin_title'>
+                        <option value="title">Title
+                        </option>
+                        <option value="mr">Mr
+                        </option>
+                        <option value="mrs">Mrs
+                        </option>
+                        <option value="ms">Ms
+                        </option>
+                        <option value="other">Other
+                        </option>
+                    </select>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <input type="text" class="form-control" placeholder="Surname" aria-label="Surname"
+                        aria-describedby="basic-addon1" name='next_of_kin_surname'>
+
+                    <input type="text" class="form-control" placeholder="Full Names" aria-label="Full_Names"
+                        aria-describedby="basic-addon1" name='next_of_kin_name'>
+
+                </div>
+
+                <div class="input-group mb-3">
+
+                    <input type="text" class="form-control" placeholder="ID Number / Passport Number"
+                        aria-label="ID Number" aria-describedby="basic-addon1" name='next_of_kin_id'>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <input type="text" class="form-control" placeholder="Street / Physical Address"
+                        aria-label="Street_Physical" aria-describedby="basic-addon1" name='next_of_kin_address'>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <input type="text" class="form-control" placeholder="City" aria-label="City"
+                        aria-describedby="basic-addon1" name='next_of_kin_city'>
+
+                    <input type="text" class="form-control" placeholder="Province" aria-label="Province"
+                        aria-describedby="basic-addon1" name='next_of_kin_province'>
+
+                </div>
+
+
+                <div class="input-group mb-3">
+
+                    <input type="text" class="form-control" placeholder="Country" aria-label="Country"
+                        aria-describedby="basic-addon1" name='next_of_kin_country'>
+
+                    <input type="text" class="form-control" placeholder="Postal Code" aria-label="Postal Code"
+                        aria-describedby="basic-addon1" name='next_of_kin_code'>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <input type="text" class="form-control" placeholder="Mobile Number 1" aria-label="Mobile_1"
+                        aria-describedby="basic-addon1" name='next_of_kin_mobile1'>
+
+                    <input type="text" class="form-control" placeholder="Mobile Number 2" aria-label="Mobile_2"
+                        aria-describedby="basic-addon1" name='next_of_kin_mobile2'>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <input type="email" class="form-control" placeholder="E-Mail" aria-label="E-Mail"
+                        aria-describedby="basic-addon1" name='next_of_kin_email'>
+
+                </div>
+
+            </div>
+
+            <div class="alert alert-default mb-1">
+                <small>
+                    <strong class="float-right">
+
+                    </strong>
+                    LIABLE FOR SETTLEMENT OF FEES
+                </small>
+            </div>
+
+            <div class="partition mb-3 pl-3">
+
+                <div class="input-group mb-1">
+
+                    <select class="custom-select" name='fees_title'>
+                        <option value="title">Title
+                        </option>
+                        <option value="mr">Mr
+                        </option>
+                        <option value="mrs">Mrs
+                        </option>
+                        <option value="ms">Ms
+                        </option>
+                        <option value="other">Other
+                        </option>
+                    </select>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <input type="text" class="form-control" placeholder="Surname" aria-label="Surname"
+                        aria-describedby="basic-addon1" name='fees_surname'>
+
+                    <input type="text" class="form-control" placeholder="Full Names" aria-label="Full_Names"
+                        aria-describedby="basic-addon1" name='fees_name'>
+
+                </div>
+
+                <div class="input-group mb-3">
+
+                    <input type="text" class="form-control" placeholder="ID Number / Passport Number"
+                        aria-label="ID Number" aria-describedby="basic-addon1" name='fees_id'>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <input type="text" class="form-control" placeholder="Street / Physical Address"
+                        aria-label="Street_Physical" aria-describedby="basic-addon1" name='fees_address'>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <input type="text" class="form-control" placeholder="City" aria-label="City"
+                        aria-describedby="basic-addon1" name='fees_city'>
+
+                    <input type="text" class="form-control" placeholder="Province" aria-label="Province"
+                        aria-describedby="basic-addon1" name='fees_province'>
+
+                </div>
+
+
+                <div class="input-group mb-3">
+
+                    <input type="text" class="form-control" placeholder="Country" aria-label="Country"
+                        aria-describedby="basic-addon1" name='fees_country'>
+
+                    <input type="text" class="form-control" placeholder="Postal Code" aria-label="Postal Code"
+                        aria-describedby="basic-addon1" name='fees_code'>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <input type="text" class="form-control" placeholder="Mobile Number 1" aria-label="Mobile_1"
+                        aria-describedby="basic-addon1" name='fees_mobile1'>
+
+                    <input type="text" class="form-control" placeholder="Mobile Number 2" aria-label="Mobile_2"
+                        aria-describedby="basic-addon1" name='fees_mobile2'>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <input type="email" class="form-control" placeholder="E-Mail" aria-label="E-Mail"
+                        aria-describedby="basic-addon1" name='fees_email'>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+        <div class="container shade mb-3 pb-2">
+
+            <div class="alert alert-default mb-1">
+                <small>
+                    <strong class="float-right">
+                        ACADEMIC HISTORY
+                    </strong>
+                    SOUTH AFRICAN QUALIFICATIONS
+                </small>
+            </div>
+
+            <div class="partition mb-3 pl-3">
+
+                <div class="input-group mb-3">
+
+                    <input type="text" class="form-control" placeholder="Current / Last School Attended"
+                        aria-label="Last_Current_School" aria-describedby="basic-addon1" name='sa_qualification_school'>
+
+                    <input type="text" class="form-control" placeholder="City / Town" aria-label="School_City"
+                        aria-describedby="basic-addon1" name='sa_qualification_city'>
+
+                </div>
+
+            </div>
+
+            <div class="alert alert-default mb-1">
+                <small>
+                    <strong class="float-right">
+                    </strong>
+                    To be completed by applicants currently in Grade 12.
+                </small>
+            </div>
+
+            <div class="partition mb-3 pl-3">
+
+                <div class="input-group mb-1">
+
+                    <input type="text" class="form-control" placeholder="School you're writing in.."
+                        aria-label="Writing_School" aria-describedby="basic-addon1" name='sa_qualification_write'>
+
+                    <input type="text" class="form-control" placeholder="Examination Number"
+                        aria-label="Examination_Number" aria-describedby="basic-addon1" name='sa_qualification_exam'>
+
+                </div>
+
+
+                <div class="input-group mb-1">
+
+                    <input type="text" class="form-control" placeholder="NSC Subject 1" aria-label="NSC_Subject_1"
+                        aria-describedby="basic-addon1" name='sa_qualification_nsc1'>
+
+                    <input type="text" class="form-control" placeholder="NSC Subject 2" aria-label="NSC_Subject_2"
+                        aria-describedby="basic-addon1" name='sa_qualification_nsc2'>
+
+                </div>
+                <div class="input-group mb-1">
+
+                    <input type="text" class="form-control" placeholder="NSC Subject 3" aria-label="NSC_Subject_3"
+                        aria-describedby="basic-addon1" name='sa_qualification_nsc3'>
+
+                    <input type="text" class="form-control" placeholder="NSC Subject 4" aria-label="NSC_Subject_4"
+                        aria-describedby="basic-addon1" name='sa_qualification_nsc4'>
+
+                </div>
+                <div class="input-group mb-1">
+
+                    <input type="text" class="form-control" placeholder="NSC Subject 5" aria-label="NSC_Subject_5"
+                        aria-describedby="basic-addon1" name='sa_qualification_nsc5'>
+
+                    <input type="text" class="form-control" placeholder="NSC Subject 6" aria-label="NSC_Subject_6"
+                        aria-describedby="basic-addon1" name='sa_qualification_nsc6'>
+
+                </div>
+                <div class="input-group mb-3">
+
+                    <input type="text" class="form-control" placeholder="NSC Subject 7" aria-label="NSC_Subject_7"
+                        aria-describedby="basic-addon1" name='sa_qualification_nsc7'>
+
+                    <input type="text" class="form-control" placeholder="NSC Subject 8" aria-label="NSC_Subject_8"
+                        aria-describedby="basic-addon1" name='sa_qualification_nsc8'>
+
+                </div>
+
+
+                <div class="input-group mb-1">
+
+                    <select class="custom-select" name='sa_qualification_authority'>
+                        <option value="examining_authority">Examining Authority
+                        </option>
+                        <option value="eastern_cape">Eastern Cape
+                        </option>
+                        <option value="free_state">Free State
+                        </option>
+                        <option value="gauteng">Gauteng
+                        </option>
+                        <option value="kwaZulu_natal">KwaZulu-Natal
+                        </option>
+                        <option value="limpopo">Limpopo
+                        </option>
+                        <option value="mpumalanga">Mpumalanga
+                        </option>
+                        <option value="northern_cape">Northern Cape
+                        </option>
+                        <option value="north_west">North-West
+                        </option>
+                        <option value="western_cape">Western Cape
+                        </option>
+                        <option value="ieb">IEB
+                        </option>
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="alert alert-default mb-1">
+                <small>
+                    <strong class="float-right">
+                    </strong>
+                    INTERNATIONAL QUALIFICATIONS
+                </small>
+            </div>
+
+            <div class="partition mb-3 pl-3">
+
+                <div class="input-group mb-1">
+
+                    <select class="custom-select" name='int_qualification_complete'>
+                        <option value="question">Have you completed your qualification?
+                        </option>
+                        <option value="yes">Yes
+                        </option>
+                        <option value="no">No
+                    </select>
+
+                </div>
+
+                <div class="input-group mb-3">
+
+                    <input type="text" class="form-control" placeholder="Month of Examination"
+                        aria-label="Month_of_Examination" aria-describedby="basic-addon1"
+                        name='int_qualification_month'>
+
+                    <input type="text" class="form-control" placeholder="Examining Authority"
+                        aria-label="Examining_Authority" aria-describedby="basic-addon1"
+                        name='int_qualification_authority'>
+
+                </div>
+
+            </div>
+
+            <div class="alert alert-default mb-1">
+                <small>
+                    <strong class="float-right">
+                        PREVIOUS AND CURRENT TERTIARY EDUCATION STUDIES
+                    </strong>
+                    STUDY PROGRAMME 1
+                </small>
+            </div>
+
+
+            <div class="partition mb-3 pl-3">
+
+                <div class="input-group mb-1">
+
+                    <input type="text" class="form-control" placeholder="Degree/Diploma/Certificate"
+                        aria-label="Degree_Diploma_Certificate" aria-describedby="basic-addon1"
+                        name='current_study_programme'>
+
+                    <input type="text" class="form-control" placeholder="Institution" aria-label="Institution"
+                        aria-describedby="basic-addon1" name='current_institution'>
+
+                </div>
+
+                <div class="input-group mb-3">
+
+                    <input type="text" class="form-control" placeholder="Student Number" aria-label="Student_Number"
+                        aria-describedby="basic-addon1" name='current_student_number'>
+
+                    <select class="custom-select" name='current_int_qualification_complete'>
+                        <option value="full_time">Full Time
+                        </option>
+                        <option value="part_time">Part Time
+                    </select>
+
+                </div>
+
+                <div class="input-group mb-3">
+
+                    <label class='mr-3'>Start Date</label>
+                    <input type="date" name="current_start_date">
+
+                    <label class='mr-3 ml-3'>End Date</label>
+                    <input type="date" name="current_end_date">
+
+                    <label class='mr-3 ml-3'>Graduation</label>
+                    <input type="date" name="current_graduation_date">
+
+                    <select class="custom-select ml-3" name='current_int_qualification_complete'>
+                        <option value="status">Status
+                        </option>
+                        <option value="passed">Passed
+                        </option>
+                        <option value="failed">Failed
+                        </option>
+                        <option value="pending">Still To Complete Year / Results Not Available
+                        </option>
+                        <option value="cancelled">Cancelled
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="alert alert-default mb-1">
+                <small>
+                    <strong class="float-right">
+                    </strong>
+                    STUDY PROGRAMME 2
+                </small>
+            </div>
+
+            <div class="partition mb-3 pl-3">
+
+                <div class="input-group mb-1">
+
+                    <input type="text" class="form-control" placeholder="Degree/Diploma/Certificate"
+                        aria-label="Degree_Diploma_Certificate" aria-describedby="basic-addon1"
+                        name='current_study_programme2'>
+
+                    <input type="text" class="form-control" placeholder="Institution" aria-label="Institution"
+                        aria-describedby="basic-addon1" name='current_institution2'>
+
+                </div>
+
+                <div class="input-group mb-3">
+
+                    <input type="text" class="form-control" placeholder="Student Number" aria-label="Student_Number"
+                        aria-describedby="basic-addon1" name='current_student_number2'>
+
+                    <select class="custom-select" name='current_int_qualification_complete'>
+                        <option value="full_time2">Full Time
+                        </option>
+                        <option value="part_time2">Part Time
+                    </select>
+
+                </div>
+
+                <div class="input-group mb-3">
+
+                    <label class='mr-3'>Start Date</label>
+                    <input type="date" name="current_start_date2">
+
+                    <label class='mr-3 ml-3'>End Date</label>
+                    <input type="date" name="current_end_date2">
+
+                    <label class='mr-3 ml-3'>Graduation</label>
+                    <input type="date" name="current_graduation_date2">
+
+                    <select class="custom-select ml-3" name='current_int_qualification_complete2'>
+                        <option value="status">Status
+                        </option>
+                        <option value="passed">Passed
+                        </option>
+                        <option value="failed">Failed
+                        </option>
+                        <option value="pending">Still To Complete Year / Results Not Available
+                        </option>
+                        <option value="cancelled">Cancelled
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="container shade mb-3 pb-2">
+
+
+            <div class="alert alert-default mb-1">
+                <small>
+                    <strong class="float-right">
+                        DOCUMENTS
+                    </strong>
+                    Please Provide The Following Documents..
+                </small>
+            </div>
+
+            <div class="alert alert-default mb-1">
+                <small>
+                    <strong class="float-right">
+                    </strong>
+                    South African Students
+                </small>
+            </div>
+
+            <div class="partition mb-3 pl-3">
+
+                <div class="input-group mb-1">
+
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02">
+                        <label class="custom-file-label" for="inputGroupFile02"
+                            aria-describedby="inputGroupFileAddon02">
+                            Certified ID Copy
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02">
+                        <label class="custom-file-label" for="inputGroupFile02"
+                            aria-describedby="inputGroupFileAddon02">
+                            Certified copy of NSC or June results if currently in Grade 12
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02">
+                        <label class="custom-file-label" for="inputGroupFile02"
+                            aria-describedby="inputGroupFileAddon02">
+                            Academic transcripts and Code of Conduct from previous university/institution
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="input-group mb-3">
+
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02">
+                        <label class="custom-file-label" for="inputGroupFile02"
+                            aria-describedby="inputGroupFileAddon02">
+                            Completed residence application form
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02">
+                        <label class="custom-file-label" for="inputGroupFile02"
+                            aria-describedby="inputGroupFileAddon02">
+                            Copy of deposit slip (R100)
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="alert alert-default mb-1">
+                <small>
+                    <strong class="float-right">
+                    </strong>
+                    International Students
+                </small>
+            </div>
+
+            <div class="partition mb-3 pl-3">
+
+                <div class="input-group mb-1">
+
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02">
+                        <label class="custom-file-label" for="inputGroupFile02"
+                            aria-describedby="inputGroupFileAddon02">
+                            Certified Passport Copy
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02">
+                        <label class="custom-file-label" for="inputGroupFile02"
+                            aria-describedby="inputGroupFileAddon02">
+                            Valid Study Permit
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02">
+                        <label class="custom-file-label" for="inputGroupFile02"
+                            aria-describedby="inputGroupFileAddon02">
+                            Certified School-Leaving Certificates
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02">
+                        <label class="custom-file-label" for="inputGroupFile02"
+                            aria-describedby="inputGroupFileAddon02">
+                            Evaluation By The South African Qualifications Authority (SAQA)
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02">
+                        <label class="custom-file-label" for="inputGroupFile02"
+                            aria-describedby="inputGroupFileAddon02">
+                            Proof Of Funding
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02">
+                        <label class="custom-file-label" for="inputGroupFile02"
+                            aria-describedby="inputGroupFileAddon02">
+                            Proof Of Medical Insurance
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02">
+                        <label class="custom-file-label" for="inputGroupFile02"
+                            aria-describedby="inputGroupFileAddon02">
+                            Matriculation Board Evaluation Document For Admission To A South African University
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="input-group mb-1">
+
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02">
+                        <label class="custom-file-label" for="inputGroupFile02"
+                            aria-describedby="inputGroupFileAddon02">
+                            Exemption From The Matriculation Board
+                        </label>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <input type="submit" class='btn btn-default btn-block' style="background-color: #CD1600; color: #e3e3e3"
+                value="Submit Application">
+
+        </div>
+
+        </div>
+
+    </form>
+
+    <script src="{% static 'bootstrap/jquery-3.4.1.slim.min.js' %}"></script>
+    <script src="{% static 'bootstrap/popper.min.js' %}"></script>
+    <script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>

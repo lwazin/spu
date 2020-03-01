@@ -1,15 +1,10 @@
 from django.contrib import admin
-from .models import Applicant, Document, Details, Sport, Subject, StudyHistory, SpecialNeed, Choice
-
+from .models import Personal, NextOfKin, Fees, SouthAfricanQualifications, InternationalQualifications
 
 # Register your models here.
 
-
-admin.site.register(Applicant)
-admin.site.register(Document)
-admin.site.register(Details)
-admin.site.register(Sport)
-admin.site.register(Subject)
-admin.site.register(StudyHistory)
-admin.site.register(SpecialNeed)
-admin.site.register(Choice)
+admin.site.register(Personal)
+admin.site.register(NextOfKin)
+admin.site.register(Fees)
+admin.site.register(SouthAfricanQualifications)
+admin.site.register(InternationalQualifications)

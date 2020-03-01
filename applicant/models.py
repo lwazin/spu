@@ -4,114 +4,122 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class Applicant(models.Model):
+class Personal(models.Model):
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default=None)
 
-    # 2. PERSONAL DETAILS
-    gender = models.TextField(max_length=30)
-    date_of_birth = models.DateField()
-
-    # 3. CITIZENSHIP
-    south_african = models.BooleanField(default=True)
-    id_number = models.SlugField()
-
-    # 4. PERSONAL INFORMATION
-    population_group = models.SlugField()
-    marital_status = models.SlugField()
-    home_language = models.SlugField()
-    religious_affiliation = models.SlugField()
-
-    # 6. PERSONAL INFORMATION (Next Of Kin)
-    nok_relationship = models.TextField(max_length=30)
-
-    # 8. ACADEMIC HISTORY – SOUTH AFRICAN QUALIFICATIONS
-    school = models.TextField(max_length=70)
-    location = models.TextField(max_length=70)
-    writing_loc = models.TextField(max_length=70, blank=True)
-    exam_number = models.SlugField(blank=True)
-    authority = models.TextField(max_length=50)
-
-    # 9. INTERNATIONAL QUALIFICATIONS
-    qualification_complete = models.BooleanField(blank=True)
-    exam_month = models.SlugField(blank=True)
+    personal_name = models.CharField(max_length=64, blank=False)
+    personal_surname = models.CharField(max_length=64, blank=False)
+    personal_title = models.CharField(max_length=64, blank=False)
+    personal_gender = models.CharField(max_length=64, blank=False)
+    personal_population = models.CharField(max_length=64, blank=False)
+    personal_marital = models.CharField(max_length=64, blank=False)
+    personal_language = models.CharField(max_length=64, blank=False)
+    personal_religion = models.CharField(max_length=64, blank=False)
+    personal_disability = models.CharField(max_length=64, blank=False)
+    personal_address = models.CharField(max_length=70, blank=False)
+    personal_city = models.CharField(max_length=64, blank=False)
+    personal_province = models.CharField(max_length=64, blank=False)
+    personal_country = models.CharField(max_length=64, blank=False)
+    personal_postal = models.CharField(max_length=64, blank=False)
+    personal_mobile1 = models.CharField(max_length=20, blank=False)
+    personal_mobile2 = models.CharField(max_length=20, blank=True)
+    personal_citizenship = models.CharField(max_length=64, blank=False)
+    personal_id = models.CharField(max_length=64, blank=False)
+    personal_email = models.EmailField(blank=False)
+    personal_date_of_birth = models.DateField(blank=False)
 
 
-class StudyHistory(models.Model):
-
-    # 10. PREVIOUS AND CURRENT TERTIARY EDUCATION STUDIES
-    applicant = models.ForeignKey(
-        Applicant, related_name='applicant_history', on_delete=models.CASCADE)
-    study_programme = models.TextField(max_length=70)
-    institution = models.TextField(max_length=70)
-    student_number = models.SlugField()
-    full_time = models.BooleanField(default=True)
-    registration_date0 = models.DateField()
-    registration_date1 = models.DateField()
-    graduation_date = models.DateField()
-    status = models.SlugField()
-
-
-class Subject(models.Model):
+class NextOfKin(models.Model):
 
     applicant = models.ForeignKey(
-        Applicant, related_name='applicant_subject', on_delete=models.CASCADE)
-    subject = models.TextField(max_length=30, blank=True)
+        Personal, related_name='next_of_kin', on_delete=models.CASCADE, default=None)
+
+    next_of_kin_relationship = models.CharField(max_length=64, blank=False)
+    next_of_kin_title = models.CharField(max_length=64, blank=False)
+    next_of_kin_surname = models.CharField(max_length=64, blank=False)
+    next_of_kin_name = models.CharField(max_length=64, blank=False)
+    next_of_kin_id = models.CharField(max_length=64, blank=False)
+    next_of_kin_address = models.CharField(max_length=70, blank=False)
+    next_of_kin_city = models.CharField(max_length=64, blank=False)
+    next_of_kin_province = models.CharField(max_length=64, blank=False)
+    next_of_kin_country = models.CharField(max_length=64, blank=False)
+    next_of_kin_code = models.CharField(max_length=64, blank=False)
+    next_of_kin_mobile1 = models.CharField(max_length=64, blank=False)
+    next_of_kin_mobile2 = models.CharField(max_length=64, blank=True)
+    next_of_kin_email = models.EmailField(blank=False)
 
 
-class Details(models.Model):
+class Fees(models.Model):
 
     applicant = models.ForeignKey(
-        Applicant, related_name='applicant_details', on_delete=models.CASCADE)
+        Personal, related_name='fees', on_delete=models.CASCADE, default=None)
 
-    detail_type = models.SlugField()
-
-    title = models.TextField(max_length=30)
-    surname = models.TextField(max_length=30)
-    full_names = models.TextField(max_length=30)
-
-    street = models.TextField(max_length=70)
-    city = models.TextField(max_length=70)
-    province = models.TextField(max_length=70)
-    country = models.TextField(max_length=70)
-    code = models.SlugField()
-
-    number_1 = models.SlugField()
-    number_2 = models.SlugField(blank=True)
-    number_3 = models.SlugField(blank=True)
-    email = models.EmailField()
+    fees_title = models.CharField(max_length=64, blank=False)
+    fees_surname = models.CharField(max_length=64, blank=False)
+    fees_name = models.CharField(max_length=64, blank=False)
+    fees_id = models.CharField(max_length=64, blank=False)
+    fees_address = models.CharField(max_length=70, blank=False)
+    fees_city = models.CharField(max_length=64, blank=False)
+    fees_province = models.CharField(max_length=64, blank=False)
+    fees_country = models.CharField(max_length=64, blank=False)
+    fees_code = models.CharField(max_length=64, blank=False)
+    fees_mobile1 = models.CharField(max_length=64, blank=False)
+    fees_mobile2 = models.CharField(max_length=64, blank=True)
+    fees_email = models.EmailField(blank=False)
 
 
-class Choice(models.Model):
+class SouthAfricanQualifications(models.Model):
 
-    # 1. CHOICE OF STUDY PROGRAMME
     applicant = models.ForeignKey(
-        Applicant, related_name='applicant_choice', on_delete=models.CASCADE)
-    choice = models.TextField(max_length=30)
-    choice_order = models.IntegerField(default=0)
+        Personal, related_name='south_african_qualifications', on_delete=models.CASCADE, default=None)
+
+    sa_qualification_school = models.CharField(max_length=64, blank=True)
+    sa_qualification_city = models.CharField(max_length=64, blank=True)
+    sa_qualification_write = models.CharField(max_length=64, blank=True)
+    sa_qualification_exam = models.CharField(max_length=64, blank=True)
+    sa_qualification_nsc1 = models.CharField(max_length=64, blank=True)
+    sa_qualification_nsc2 = models.CharField(max_length=64, blank=True)
+    sa_qualification_nsc3 = models.CharField(max_length=64, blank=True)
+    sa_qualification_nsc4 = models.CharField(max_length=64, blank=True)
+    sa_qualification_nsc5 = models.CharField(max_length=64, blank=True)
+    sa_qualification_nsc6 = models.CharField(max_length=64, blank=True)
+    sa_qualification_nsc7 = models.CharField(max_length=64, blank=True)
+    sa_qualification_nsc8 = models.CharField(max_length=64, blank=True)
+    sa_qualification_authority = models.CharField(max_length=64, blank=True)
 
 
-class SpecialNeed(models.Model):
+class InternationalQualifications(models.Model):
 
-    # 4. PERSONAL INFORMATION (Disability or Special Needs)
     applicant = models.ForeignKey(
-        Applicant, related_name='applicant_special', on_delete=models.CASCADE)
-    special_need = models.TextField(max_length=30)
+        Personal, related_name='international_qualifications', on_delete=models.CASCADE, default=None)
+
+    int_qualification_complete = models.CharField(max_length=64, blank=True)
+    int_qualification_month = models.CharField(max_length=64, blank=True)
+    int_qualification_authority = models.CharField(max_length=64, blank=True)
 
 
-class Sport(models.Model):
+class TertiaryEducationStudies(models.Model):
 
-    # 4. PERSONAL INFORMATION (Sport Involvement)
     applicant = models.ForeignKey(
-        Applicant, related_name='applicant_sport', on_delete=models.CASCADE)
-    sport = models.TextField(max_length=30)
-    level = models.TextField(max_length=50)
+        Personal, related_name='tertiary_education_studies', on_delete=models.CASCADE, default=None)
 
+    current_study_programme = models.CharField(max_length=64, blank=True)
+    current_institution = models.CharField(max_length=64, blank=True)
+    current_student_number = models.CharField(max_length=64, blank=True)
+    current_int_qualification_complete = models.CharField(
+        max_length=64, blank=True)
+    current_start_date = models.DateField()
+    current_end_date = models.DateField()
+    current_graduation_date = models.DateField()
+    current_int_qualification_complete = models.DateField()
 
-class Document(models.Model):
-
-    # 4. PERSONAL INFORMATION (Sport Involvement)
-    applicant = models.ForeignKey(
-        Applicant, related_name='applicant_document', on_delete=models.CASCADE)
-    document_type = models.SlugField()
-    document = models.ImageField(upload_to='documents')
+    current_study_programme2 = models.CharField(max_length=64, blank=True)
+    current_institution2 = models.CharField(max_length=64, blank=True)
+    current_student_number2 = models.CharField(max_length=64, blank=True)
+    current_int_qualification_complete = models.CharField(
+        max_length=64, blank=True)
+    current_start_date2 = models.DateField()
+    current_end_date2 = models.DateField()
+    current_graduation_date2 = models.DateField()
+    current_int_qualification_complete2 = models.DateField()
